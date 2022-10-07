@@ -12,14 +12,14 @@ class ProductService {
   }
 
   public async create(user: User): Promise<string> {
-    const result = await this.model.create(user);
-    return generateToken({ id: result.id, username: result.username });
+    await this.model.create(user);
+    return generateToken(Number(user.id), user.username);
   }
 
   public async login(login: Login): Promise<string> {
     const result = await this.model.login(login);
     if (result.length && result[0]
-      .id) { return generateToken({ id: result.id, username: result.username }); }
+      .id) { return generateToken(result[0].id, result[0].username); }
     return 'invalid';
   }
 }

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import UserData from '../interfaces/userData.interface';
+// import UserData from '../interfaces/userData.interface';
 
 const secret = process.env.JWT_SECRET || 'suaSenhaSecreta';
 
@@ -7,9 +7,11 @@ const jwtConfig = {
   expiresIn: '7d',
 };
 
-const generateToken = ({ id, username }:UserData): string => {
+const generateToken = (id:number, username:string): string => {
+  console.log(id, username);
   const token = jwt.sign(
-    { data: { id, username } },
+    { id,
+      username },
     secret,
     jwtConfig,
   );
