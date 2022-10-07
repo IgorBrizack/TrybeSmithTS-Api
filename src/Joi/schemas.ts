@@ -5,6 +5,11 @@ const schema1 = Joi.object({
   password: Joi.string().required().min(6),
 });
 
-const schemas = { schema1 };
+const schema2 = Joi.object({
+  name: Joi.string().required().min(3),
+  amount: Joi.string().required(),
+});
+
+const schemas = { schema1, schema2 };
 
 export default schemas;

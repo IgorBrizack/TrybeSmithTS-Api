@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/products', ProductRouter);
+app.use('/products', Middlwares.productValidation, ProductRouter);
 app.use('/users', UserRouter);
 app.use('/orders', OrderRouter);
 app.use('/login', Middlwares.loginMiddleware, LoginRouter);
