@@ -1,4 +1,6 @@
 import User from '../interfaces/user.interface';
+// import JwtConfig from '../interfaces/jwtConfig.interface';
+// import UserData from '../interfaces/userData.interface';
 import connection from '../models/connection';
 import UserModel from '../models/user.model';
 import generateToken from '../generateToken';
@@ -10,9 +12,9 @@ class ProductService {
     this.model = new UserModel(connection);
   }
 
-  public create(product: User): Promise<User> {
-    const result = this.model.create(product);
-    return generateToken({ id, username });
+  public async create(user: User): Promise<string> {
+    const result = await this.model.create(user);
+    return generateToken({ id: result.id, username: result.username });
   }
 
   // public async getAll(): Promise<Product[]> {
