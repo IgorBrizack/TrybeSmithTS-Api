@@ -18,7 +18,11 @@ const schema3 = Joi.object({
 });
 
 const schema4 = Joi.object({
-  productsIds: Joi.array().required().items(Joi.number()),
+  productsIds: Joi.array().min(1).required().items(Joi.number())
+    .messages({
+      'array.min': '"productsIds" must include only numbers',
+    }),
+  payload: Joi.required(),
 });
 
 const schemas = { 

@@ -1,6 +1,5 @@
 import { NextFunction, Response, Request } from 'express';
 import jwt from 'jsonwebtoken';
-// import RequestExtUser from '../interfaces/request.interface';
 
 const secret = process.env.JWT_SECRET || 'suaSenhaSecreta';
 

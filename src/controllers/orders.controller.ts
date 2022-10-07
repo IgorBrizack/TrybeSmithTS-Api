@@ -1,6 +1,4 @@
 import { Request, Response } from 'express';
-// import Login from '../interfaces/login.interface';
-// import RequestExtUser from '../interfaces/request.interface';
 import OrderService from '../services/orders.service';
 
 class ProductController {
@@ -19,8 +17,7 @@ class ProductController {
     const { body: { productsIds, payload: { id } } } = req;
     console.log(req.body.payload);
     const orderCreated = await this.orderService.create(productsIds, id);
-    console.log(orderCreated);
-    res.status(200).json(orderCreated);
+    res.status(201).json(orderCreated);
   };
 }
 

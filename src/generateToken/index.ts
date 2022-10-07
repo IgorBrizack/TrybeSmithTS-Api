@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-// import UserData from '../interfaces/userData.interface';
 
 const secret = process.env.JWT_SECRET || 'suaSenhaSecreta';
 
