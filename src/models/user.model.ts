@@ -1,5 +1,6 @@
-import { Pool, ResultSetHeader } from 'mysql2/promise';
+import { Pool, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import User from '../interfaces/user.interface';
+import Login from '../interfaces/login.interface';
 
 export default class UserModel {
   public connection: Pool;
@@ -19,9 +20,13 @@ export default class UserModel {
     return { id: insertId, ...user };
   }
 
-  // public async getAll(): Promise<Product[]> {
-  //   const result = await this.connection.execute('SELECT * FROM Trybesmith.Products');
-  //   const [rows] = result;
-  //   return rows as Product[];
-  // }
+  public async login(loginData: Login) {
+    const { username, password } = loginData;
+    const [result] = await this.connection.execute<(
+    RowDataPacket[] & Login)>(
+      'SELECT * FROM Trybesmith.Users WHERE username=? AND password=?',
+      [username, password],
+      );
+    return result;
+  }
 }
