@@ -8,7 +8,6 @@ const jwtConfig = {
 };
 
 const generateToken = (id:number, username:string): string => {
-  console.log(id, username);
   const token = jwt.sign(
     { id,
       username },

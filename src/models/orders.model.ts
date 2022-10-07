@@ -1,9 +1,5 @@
 import { Pool, ResultSetHeader } from 'mysql2/promise';
 import Order from '../interfaces/order.interface';
-import Id from '../interfaces/idUserReturn.interface';
-// import ProductsInserted from '../interfaces/newProducts.interface';
-// import Login from '../interfaces/login.interface';
-// import RequestExtUser from '../interfaces/request.interface';
 
 export default class OrderModel {
   public connection: Pool;
@@ -23,18 +19,21 @@ export default class OrderModel {
     return rows as Order[];
   }
 
-  public async create(userId: string): Promise<Id> {
+  public async create(userId: number): Promise<number> {
     const result = await this.connection.execute<ResultSetHeader>(
-      'INSERT INTO Trybesmith.Orders userId VALUES (?)',
+      'INSERT INTO Trybesmith.Orders (userId) VALUES (?)',
       [userId],
     );
 
     const [dataInserted] = result;
     const { insertId } = dataInserted;
-    return { id: insertId };
+    return insertId;
   }
 
-  // public async insertProducts(orderCreated: number | undefined, body: ProductsInserted): Promise<Id> {
-    
-  // }
+  public async insertProducts(idUsuario: number, idProduct: number): Promise<void> {
+    await this.connection.execute(
+      'UPDATE Trybesmith.Products SET orderid = ? WHERE id=? ',
+      [idUsuario, idProduct],
+    );
+  }
 }

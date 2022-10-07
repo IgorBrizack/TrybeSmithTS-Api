@@ -17,10 +17,15 @@ const schema3 = Joi.object({
   password: Joi.string().required().min(8),
 });
 
+const schema4 = Joi.object({
+  productsIds: Joi.array().required().items(Joi.number()),
+});
+
 const schemas = { 
   schema1,
   schema2,
-  schema3, 
+  schema3,
+  schema4, 
 };
 
 export default schemas;

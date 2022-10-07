@@ -16,11 +16,11 @@ class ProductController {
   };
 
   public create = async (req: Request, res: Response) => {
-    // const { body: { productsIds, payload } } = req;
-    // const { data: id } = payload;
+    const { body: { productsIds, payload: { id } } } = req;
     console.log(req.body.payload);
-    // const orderCreated = await this.orderService.create(productsIds, id);
-    res.status(200).json({ message: req.body.payload.data });
+    const orderCreated = await this.orderService.create(productsIds, id);
+    console.log(orderCreated);
+    res.status(200).json(orderCreated);
   };
 }
 

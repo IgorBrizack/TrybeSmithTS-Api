@@ -3,6 +3,7 @@
 // import Login from '../interfaces/login.interface';
 // import ProductsInserted from '../interfaces/newProducts.interface';
 import Order from '../interfaces/order.interface';
+import OrderInserted from '../interfaces/orderInserted.interface';
 // import RequestExtUser from '../interfaces/request.interface';
 import connection from '../models/connection';
 import OrderModel from '../models/orders.model';
@@ -21,13 +22,15 @@ class OrderService {
     return orders;
   }
 
-  // public async create(body: ProductsInserted, id: number): Promise<number[]> {
-  //   const id = jwt.verify(auth, secret);
-  //   const orderCreated = await this.model.create(id);
-  //   const insertedProducts = await this.model.insertProducts(orderCreated.id, body);
+  public async create(productsIds: number[], userId: number): Promise<OrderInserted> {
+    const orderId = await this.model.create(userId);
+    const insertedProducts = productsIds.map((el) => (
+      this.model.insertProducts(Number(orderId), el)
+    ));
+    Promise.all(insertedProducts);
 
-  //   return [orderCreated, insertedProducts];
-  // }
+    return { userId, productsIds };
+  }
 }
 
 export default OrderService;
