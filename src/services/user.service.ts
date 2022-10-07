@@ -1,6 +1,7 @@
 import User from '../interfaces/user.interface';
 import connection from '../models/connection';
-import UserModel from '../models/user.mode';
+import UserModel from '../models/user.model';
+import generateToken from '../generateToken';
 
 class ProductService {
   public model: UserModel;
@@ -10,7 +11,8 @@ class ProductService {
   }
 
   public create(product: User): Promise<User> {
-    return this.model.create(product);
+    const result = this.model.create(product);
+    return generateToken({ id, username });
   }
 
   // public async getAll(): Promise<Product[]> {
