@@ -2,7 +2,7 @@
 
 ## 📄 Sobre
 
-Foi desenvolvido uma API RESTful e um banco de dados utilizando como linguagem o TypeScript!
+Foi desenvolvido uma API RESTful que interage com um banco de dados SQL e para desenvolvimento foi utilizado como linguagem o TypeScript!
 
 ## 📋 Execute o projeto em sua máquina
 
@@ -80,6 +80,16 @@ git@github.com:IgorBrizack/TrybeSmithTS-Api.git
   <summary><strong>POST /login</strong></summary>
   </br>
   • Se o login for feito com sucesso retorna um token para o usuário.
+  </br>
+  • O endpoint deve receber a seguinte estrutura:
+  
+```json
+  {
+    "username": "string",
+    "password": "string"
+  }
+```
+  
 </details>
 
 ### User
@@ -88,6 +98,18 @@ git@github.com:IgorBrizack/TrybeSmithTS-Api.git
   <summary><strong>POST /user</strong></summary>
   </br>
   • Cadastra um novo usuário, permitindo apenas um email válido, gerando um token.
+  </br> 
+  • O endpoint deve receber a seguinte estrutura:
+  
+  ```json
+  { 
+    "username": "MAX",
+    "classe": "swordsman",
+    "level": 10,
+    "password": "SavingPeople"
+  }
+```
+  
 </details>
 
 <details>
@@ -106,6 +128,16 @@ git@github.com:IgorBrizack/TrybeSmithTS-Api.git
   • Faz o login caso encontre um úsuario e senha válidos.
   </br>
   • Retorna um token, caso seja feito o login..
+  </br>
+  • O endpoint deve receber a seguinte estrutura:
+  
+```json
+  {
+    "username": "string",
+    "password": "string"
+  }
+```
+
 </details>
 
 ### Products
@@ -122,12 +154,14 @@ git@github.com:IgorBrizack/TrybeSmithTS-Api.git
   • Inseri um produto ao banco de dados.
   </br>
   • O endpoint deve receber a seguinte estrutura:
+  
   ```json
     {
       "name": "Espada longa",
       "amount": "30 peças de ouro"
     }
   ```
+  
 </details>
 
 ### Orders
@@ -142,6 +176,15 @@ git@github.com:IgorBrizack/TrybeSmithTS-Api.git
   <summary><strong>POST /orders</strong></summary>
   </br>
   • Inseri uma nova ordem ao banco de dados.
+  </br>
+  • O endpoint deve receber a seguinte estrutura:
+  
+```json
+  {
+    "productsIds": [1, 2]
+  }
+```
+
 </details>
 
 
@@ -151,12 +194,12 @@ git@github.com:IgorBrizack/TrybeSmithTS-Api.git
 - [Node.js](https://nodejs.org/en/);
 - [Express.js](https://expressjs.com/);
 - [MYSQL](https://www.mysql.com/);
-- [mysql2](https://www.npmjs.com/package/mysql2);
-- [Sequelize(ORM)](https://sequelize.org/);
+- [SQL](https://www.w3schools.com/sql/);
 - [JWT(Autenticação)](https://jwt.io/);
 - [Joi](https://joi.dev/api/?v=17.6.0);
 - [Docker](https://www.docker.com/);
 - JavaScript ES6+;
+- [TypeScript](https://www.typescriptlang.org/);
 
 ---
 ⌨️ desenvolvido por [Igor Brizack](https://www.linkedin.com/in/igor-brizack/) 😄
