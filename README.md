@@ -195,6 +195,7 @@ git@github.com:IgorBrizack/TrybeSmithTS-Api.git
 - [Express.js](https://expressjs.com/);
 - [MYSQL](https://www.mysql.com/);
 - [SQL](https://www.w3schools.com/sql/);
+- [mysql2](https://www.npmjs.com/package/mysql2);
 - [JWT(Autenticação)](https://jwt.io/);
 - [Joi](https://joi.dev/api/?v=17.6.0);
 - [Docker](https://www.docker.com/);
